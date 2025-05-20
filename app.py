@@ -32,3 +32,6 @@ while True:
         time.sleep(2)  # pequeño delay entre pings para no saturar
     print("🕒 Esperando 10 minutos...")
     time.sleep(600)
+
+if __name__ == '__main__':
+    app.run(debug=True, host="0.0.0.0", port=5000)

@@ -2,12 +2,14 @@ import requests
 import time
 import random
 import string
+import threading
+from flask import Flask
 
-# Lista de tus proyectos (URLs del endpoint /keepalive de Replit)
+app = Flask(__name__)
+
+# Tu lista de URLs Replit
 URLS = [
     "https://67dec50d-bc6f-45f0-babe-45029e97dbfb-00-2f8src31cuzta.janeway.replit.dev/keepalive"
- 
-   
 ]
 
 def generar_payload():
@@ -25,13 +27,23 @@ def ping(url):
     except Exception as e:
         print(f"[ERROR] {url} - {e}")
 
-while True:
-    print("🔁 Enviando keepalive a todos los proyectos...")
-    for url in URLS:
-        ping(url)
-        time.sleep(2)  # pequeño delay entre pings para no saturar
-    print("🕒 Esperando 10 minutos...")
-    time.sleep(600)
+def ciclo_keepalive():
+    while True:
+        print("🔁 Enviando keepalive a todos los proyectos...")
+        for url in URLS:
+            ping(url)
+            time.sleep(2)
+        print("🕒 Esperando 10 minutos...")
+        time.sleep(600)
 
+# Iniciar el hilo de keepalive en segundo plano
+threading.Thread(target=ciclo_keepalive, daemon=True).start()
+
+# Endpoint GET para mantener Render activo
+@app.route("/", methods=["GET"])
+def index():
+    return "✅ Servicio activo. Keepalives en ejecución.", 200
+
+# Iniciar servidor Flask
 if __name__ == '__main__':
-    app.run(debug=True, host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=10000)

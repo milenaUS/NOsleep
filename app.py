@@ -10,7 +10,8 @@ app = Flask(__name__)
 # Tu lista de URLs Replit
 URLS = [
     "https://67dec50d-bc6f-45f0-babe-45029e97dbfb-00-2f8src31cuzta.janeway.replit.dev/keepalive",
-     "https://5c2543a6-a058-49cb-86b7-51a320e5a91c-00-f32zkz78peig.picard.replit.dev/keepalive"
+     "https://5c2543a6-a058-49cb-86b7-51a320e5a91c-00-f32zkz78peig.picard.replit.dev/keepalive",
+    "https://d74d67c2-81c1-463a-937e-0b57c6d703c1-00-15649h9fk0t3.janeway.replit.dev/keepalive"
 ]
 
 def generar_payload():

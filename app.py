@@ -5,10 +5,9 @@ import string
 
 # Lista de tus proyectos (URLs del endpoint /keepalive de Replit)
 URLS = [
-    "https://proyecto1.repl.co/keepalive",
-    "https://proyecto2.repl.co/keepalive",
-    "https://proyecto3.repl.co/keepalive",
-    # Agrega más aquí
+    "https://67dec50d-bc6f-45f0-babe-45029e97dbfb-00-2f8src31cuzta.janeway.replit.dev/keepalive"
+ 
+   
 ]
 
 def generar_payload():
